@@ -1,0 +1,168 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "poppins", sans-serif;
+}
+/* @font-face {
+  font-family: "PlusJakartaSans-Bold";
+  src: url(../public/font/PlusJakartaSans-Bold.ttf);
+}
+.body {
+  overflow-x: hidden !important;
+  font-family: "PlusJakartaSans-Regular";
+} */
+
+.login_mainContainer {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(./assets/loginPagebackground.png);
+}
+.login_container {
+  margin: 0 auto;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.login_card {
+  border-radius: 15px !important;
+  width: 65%;
+  height: 80vh;
+}
+.login_title {
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 22px;
+  color: #373634;
+  font-weight: 900;
+  font-family: "poppins";
+}
+.lockScreen_form {
+  margin-top: 65px;
+}
+.login-right-height {
+  height: 80vh;
+}
+.login_leftGrid {
+  background-image: url(./assets/blueBg.png);
+  background-size: 100% 101%;
+  background-repeat: no-repeat;
+}
+.login_rightGrid {
+  margin-top: 65px !important;
+}
+.loginform {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: space-between;
+  /* // height: 60vh; */
+}
+.login_leftGridContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: space-between;
+  padding: -1px 25px;
+  margin-top: 50px;
+}
+.loginGridContainer {
+  height: 80vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  margin: 0 auto;
+}
+.logo_aetmaadDemo {
+  width: 50%;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+}
+.login_logo {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.login_buttonContainer {
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+.login_aetmaadDesc {
+  letter-spacing: -1px;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 130px;
+}
+.deviceID {
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
+@media screen and (max-height: 800px) {
+  .logingform {
+    height: 50vh;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .login_aetmaadDesc {
+    padding-bottom: 170px;
+  }
+  .logo_aetmaadDemo {
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login_card {
+    height: 30rem;
+    width: 90%;
+  }
+  .login-right-height {
+    height: 50vh;
+  }
+}
+@media screen and (max-width: 350px) {
+  .login_card {
+    height: 26.5rem;
+    width: 95%;
+  }
+  .login_rightGrid {
+    margin-top: 45px !important;
+  }
+}
+.lockScreen-pin-title {
+  font-size: 15px !important;
+  font-weight: 600;
+  font-family: "poppins";
+  color: #000000;
+}
+.form-control {
+  display: block;
+  width: 100% !important;
+  /* height: 84px !important; */
+  height: calc(1.5em + 0.94rem + 2px);
+  padding: 0.47rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #505d69;
+  /* background-color: #fff; */
+  background-clip: padding-box;
+  border: 1px solid #f2f2f2;
+  border-radius: 0.5rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 768px) {
+  .dropdownButton {
+    display: none !important;
+  }
+}

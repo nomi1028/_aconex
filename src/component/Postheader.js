@@ -1,4 +1,4 @@
-import { IconButton, Typography } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,7 +29,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-
+import { useNavigate } from "react-router-dom";
 import "swiper/swiper.min.css";
 // import "swiper/components/navigation/navigation.min.css";
 // import SwiperCore, { Navigation } from "swiper";
@@ -40,6 +40,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 const Postheader = () => {
+  const navigate = useNavigate();
   const [link, setlink] = useState(1);
   const [swiperLink, setswiperLink] = useState(calculateSlidesPerView());
   function calculateSlidesPerView(sliderLength) {
@@ -71,21 +72,18 @@ const Postheader = () => {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const open = Boolean(anchorE2);
+  const open3 = Boolean(anchorE3);
   const authOpen = Boolean(anchorE3);
-  const handleClick = (event) => {
-    setAnchorE2(event.currentTarget);
+  const handleClick = (event, value) => {
+    if (value == 3) {
+      setAnchorE3(event.currentTarget);
+    } else {
+      setAnchorE2(event.currentTarget);
+    }
   };
   const handleClose = () => {
     setAnchorE2(null);
-  };
-  const handleClickAuth = (event) => {
-    setAnchorE3(event.currentTarget);
-  };
-  const handleCloseAuth = () => {
     setAnchorE3(null);
-  };
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
   };
 
   const array = [
@@ -205,38 +203,126 @@ const Postheader = () => {
         <div>
           <IconButton
             id="fade-button"
-            aria-controls={open ? "fade-menu" : undefined}
+            aria-controls={open3 ? "fade-menu" : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            // onClick={handleClick}
+            aria-expanded={open3 ? "true" : undefined}
+            onClick={(e) => handleClick(e, 3)}
           >
             <ArrowDropDownIcon sx={{ color: "white" }} />
           </IconButton>
-          {/* <Menu
+          <Menu
             id="fade-menu"
             MenuListProps={{
               "aria-labelledby": "fade-button",
             }}
-            anchorEl={anchorE2}
-            open={open}
+            anchorEl={anchorE3}
+            open={open3}
             onClose={handleClose}
             TransitionComponent={Fade}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            // anchorOrigin={{
+            //   vertical: "bottom",
+            //   horizontal: "right",
+            // }}
+            // transformOrigin={{
+            //   vertical: "top",
+            //   horizontal: "right",
+            // }}
+            // sx={{ marginLeft: "-110px" }}
+            className="document-container"
           >
-            <MenuItem onClick={handleClose} sx={{ width: 250 }}>
-              Lahore Time Square
-            </MenuItem>
-            <MenuItem onClick={handleClose} sx={{ width: 250 }}>
-              MENA Training
-            </MenuItem>
-          </Menu> */}
+            <Grid container className="" sx={{ marginBottom: "20px" }}>
+              <Grid item xs={12} sm={6} md={4} lg={5}>
+                <Typography className="dropdown_heading">Search </Typography>
+                <Typography
+                  className="dropdown_subheading"
+                  onClick={() => {
+                    navigate("/register");
+                  }}
+                >
+                  Document Register{" "}
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Drawings
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Temporary Files
+                </Typography>
+
+                <Typography className="dropdown_heading">Actions</Typography>
+                <Typography className="dropdown_subheading">
+                  Add/Update Documents
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Add/Update DocumentsAdd/Update Placeholders
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Bulk Processing
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  View Outstanding Print Requests
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Specification Reader
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={1}
+                lg={1}
+                // sx={{ paddingRight: "20px" }}
+              ></Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={6}
+                sx={{ paddingRight: "15px" }}
+              >
+                <Typography className="dropdown_headings">
+                  My Project's Searches{" "}
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Document Export_PDP
+                </Typography>
+
+                <Typography className="dropdown_headings">
+                  Standard Searches{" "}
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Approved
+                </Typography>
+
+                <Typography className="dropdown_subheadings">
+                  Drawings modified today
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Issued for approval
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Temporary files uploaded by me today
+                </Typography>
+              </Grid>
+
+              {/* Add more Grid items as needed */}
+            </Grid>
+            <Grid container className="footer">
+              <Grid item xs={12} sm={12} md={12} lg={3} sx={{}}></Grid>
+              <Grid item xs={12} sm={12} md={12} lg={7} sx={{}}>
+                <Typography className="footer_heading">
+                  Switched to new Improved Search & Upload
+                </Typography>
+                <Typography className="footer_subheading">
+                  Project fields are used in the project, as a result New
+                  Improved Search and Upload are enabled for all the project
+                  users by default
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} md={1} lg={1} sx={{}}></Grid>
+            </Grid>
+          </Menu>
         </div>
       ),
     },
@@ -271,21 +357,102 @@ const Postheader = () => {
             open={open}
             onClose={handleClose}
             TransitionComponent={Fade}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            // anchorOrigin={{
+            //   vertical: "bottom",
+            //   horizontal: "right",
+            // }}
+            // transformOrigin={{
+            //   vertical: "top",
+            //   horizontal: "right",
+            // }}
+            sx={{ marginLeft: "-70px" }}
           >
-            <MenuItem onClick={handleClose} sx={{ width: 250 }}>
-              Lahore Time Square
-            </MenuItem>
-            <MenuItem onClick={handleClose} sx={{ width: 250 }}>
-              MENA Training
-            </MenuItem>
+            <Grid
+              container
+              className="dropdown_width"
+              sx={{ marginBottom: "20px" }}
+            >
+              <Grid item xs={12} sm={12} md={4} lg={5}>
+                <Typography className="dropdown_heading">Search </Typography>
+                <Typography className="dropdown_subheading">All </Typography>
+                <Typography className="dropdown_subheading">Inbox</Typography>
+                <Typography className="dropdown_subheading">Sent</Typography>
+                <Typography className="dropdown_subheading">Drafts</Typography>
+
+                <Typography className="dropdown_heading">
+                  Create New{" "}
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Blank Mail{" "}
+                </Typography>
+
+                <Typography className="dropdown_heading">Actions</Typography>
+                <Typography
+                  className="dropdown_subheading"
+                  onClick={() => navigate("/about")}
+                >
+                  Register Incoming Mail{" "}
+                </Typography>
+                <Typography className="dropdown_subheading">
+                  Mail Approvals
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={1}
+                lg={1}
+                // sx={{ paddingRight: "20px" }}
+              ></Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                sx={{ paddingRight: "15px" }}
+              >
+                <Typography className="dropdown_headings">
+                  My Project's Searches{" "}
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  General Correspondence
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Export_PDP
+                </Typography>
+
+                <Typography className="dropdown_headings">
+                  Standard Searches{" "}
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  My mail received today
+                </Typography>
+
+                <Typography className="dropdown_subheadings">
+                  My mail sent today
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  My Outstanding & Overdue mail{" "}
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Org mail not Closed Out
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  Org mail received in last 30 days
+                </Typography>
+
+                <Typography className="dropdown_subheadings">
+                  My Outstanding & Overdue mail{" "}
+                </Typography>
+                <Typography className="dropdown_subheadings">
+                  RFIs received report
+                </Typography>
+              </Grid>
+
+              {/* Add more Grid items as needed */}
+            </Grid>
           </Menu>
         </div>
       ),

@@ -14,6 +14,7 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -21,7 +22,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Postheader from "./Postheader";
-
+import "./loginPage.css";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -63,6 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const navigate = useNavigate();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorE2, setAnchorE2] = React.useState(null);
@@ -140,25 +142,23 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
+          <NotificationsIcon />
         </IconButton>
-        <p>Notifications</p>
+        <p style={{ margin: "0" }}>Notifications</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -172,6 +172,24 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <MenuItem
+        onClick={() => {
+          navigate("/login");
+          handleCloseAuth();
+        }}
+        sx={{}}
+      >
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <p>Log out</p>
+      </MenuItem>
     </Menu>
   );
 
@@ -184,7 +202,7 @@ export default function PrimarySearchAppBar() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2, marginTop: "-5px" }}
+            sx={{ mr: 2, marginTop: "0px" }}
           >
             <MenuIcon />
           </IconButton>
@@ -196,10 +214,10 @@ export default function PrimarySearchAppBar() {
               display: { xs: "none", sm: "block" },
               mr: 5,
               fontSize: "25px",
-              marginTop: "-10px",
+              marginTop: "-4px",
             }}
           >
-            Aconex
+            Lahore Times Square
           </Typography>
           <Typography
             variant="p"
@@ -216,6 +234,7 @@ export default function PrimarySearchAppBar() {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
+              className="dropdownButton"
             >
               <ArrowDropDownIcon sx={{ color: "white", fontSize: "35px" }} />
             </IconButton>
@@ -283,6 +302,7 @@ export default function PrimarySearchAppBar() {
             aria-haspopup="true"
             aria-expanded={authOpen ? "true" : undefined}
             onClick={handleClickAuth}
+            className="dropdownButton"
           >
             <ArrowDropDownIcon
               sx={{ color: "white", fontSize: "35px", marginTop: "-14px" }}
@@ -309,7 +329,13 @@ export default function PrimarySearchAppBar() {
               }}
               sx={{ marginTop: "-20px" }}
             >
-              <MenuItem onClick={handleCloseAuth} sx={{}}>
+              <MenuItem
+                onClick={() => {
+                  navigate("/login");
+                  handleCloseAuth();
+                }}
+                sx={{}}
+              >
                 Log out
               </MenuItem>
             </Menu>
@@ -355,6 +381,7 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
+      <Postheader />
       {renderMobileMenu}
       {renderMenu}
     </Box>
