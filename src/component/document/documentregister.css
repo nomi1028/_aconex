@@ -141,7 +141,7 @@
   color: #000;
 }
 .select-multi {
-  width: 94.5%;
+  width: 90%;
   font-style: italic;
   font-size: 12px;
   font-weight: 400;
@@ -222,6 +222,9 @@
   color: #000;
   font-weight: 500;
 }
+.css-tzsjye {
+  width: 95%;
+}
 .bottomFilter-container {
   height: 40vh;
   background-color: #f3f3f3;
@@ -235,7 +238,7 @@
   display: flex;
 }
 .width-dropdown {
-  width: 95%;
+  width: 95% !important;
 }
 @media only screen and (max-width: 1000px) {
   .flex-display {
@@ -248,10 +251,13 @@
 
 @media only screen and (min-width: 300px) and (max-width: 400px) {
   .select-multi {
-    width: 100%;
+    width: 95% !important;
   }
   .SelectWidth {
     width: 100% !important;
+  }
+  .css-tzsjye {
+    width: 96% !important;
   }
   .inputWidth {
     width: 95%;
@@ -262,7 +268,7 @@
 }
 @media only screen and (min-width: 401px) and (max-width: 600px) {
   .select-multi {
-    width: 100%;
+    width: 98.5%;
   }
   .SelectWidth {
     width: 100% !important;
@@ -272,6 +278,9 @@
   }
   .width-dropdown {
     width: 100%;
+  }
+  .css-tzsjye {
+    width: 98% !important;
   }
 }
 .flex-menu-body {
